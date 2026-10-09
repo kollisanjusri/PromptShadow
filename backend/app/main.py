@@ -4,6 +4,12 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import OLLAMA_URL, OLLAMA_MODEL
 from app.routes import scan
+from app.api.routes import health, admin
+from app.db.session import engine
+from app.models.scan import Base
+
+# Initialize database tables
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="PromptShadow API",
@@ -20,22 +26,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include Scanner router
+# Include API routers
 app.include_router(scan.router)
+app.include_router(health.router, prefix="/api")
+app.include_router(admin.router, prefix="/api")
 
 
 @app.get("/health")
 def health_check():
-    """
-    Health check endpoint returning system status and local Ollama connectivity.
-    """
+    """Check backend health and local Ollama connectivity."""
     ollama_status = "unavailable"
+
     try:
         url = f"{OLLAMA_URL.rstrip('/')}/api/tags"
         res = requests.get(url, timeout=2.0)
+
         if res.status_code == 200:
             ollama_status = "connected"
-    except Exception:
+    except requests.RequestException:
         ollama_status = "unavailable"
 
     return {
@@ -48,3 +56,4 @@ def health_check():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
+    
