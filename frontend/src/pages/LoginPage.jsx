@@ -51,12 +51,8 @@ const LoginPage = ({ theme, toggleTheme }) => {
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
         <div className="panel" style={{ maxWidth: '420px', width: '100%', padding: '2.5rem' }}>
           
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2rem' }}>
-            <Shield size={48} color="var(--accent-primary)" style={{ marginBottom: '1rem' }} />
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>PromptShadow</h1>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', textAlign: 'center' }}>
-              Smart Data Leak Prevention for AI Chatbots
-            </p>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2.5rem' }}>
+            <img src="/logo.png" alt="PromptShadow Logo" style={{ height: '70px', objectFit: 'contain' }} className="brand-logo" />
           </div>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
