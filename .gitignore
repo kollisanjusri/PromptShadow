@@ -1,0 +1,27 @@
+# Environments
+.env
+.venv
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Database
+*.sqlite3
+promptshadow.db
+
+# OS
+.DS_Store
+Thumbs.db
