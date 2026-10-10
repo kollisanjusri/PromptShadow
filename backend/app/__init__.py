@@ -1,1 +1,1 @@
-# Make app a package
+"""PromptShadow Backend App Package."""

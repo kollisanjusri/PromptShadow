@@ -17,11 +17,9 @@ const Navbar = ({ theme, toggleTheme }) => {
   return (
     <nav className="navbar">
       <div className="nav-left">
-        <div className="nav-logo">
-          <Shield color="var(--accent-primary)" />
-          PromptShadow
+        <div className="nav-logo" style={{ padding: 0 }}>
+          <img src="/logo.png" alt="PromptShadow Logo" style={{ height: '40px', objectFit: 'contain' }} className="brand-logo" />
         </div>
-        <div className="nav-tagline">Smart Data Leak Prevention for AI Chatbots</div>
       </div>
       
       <div className="nav-links">
