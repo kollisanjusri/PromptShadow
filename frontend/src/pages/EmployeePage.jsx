@@ -3,7 +3,7 @@ import PromptEditor from '../components/employee/PromptEditor';
 import SecurityAssessment from '../components/employee/SecurityAssessment';
 import ProtectedPrompt from '../components/employee/ProtectedPrompt';
 import RecentScanActivity from '../components/employee/RecentScanActivity';
-import { mockScanPrompt } from '../services/scanService';
+import { scanPrompt } from '../services/scanService';
 
 const EmployeePage = () => {
   const [prompt, setPrompt] = useState('');
@@ -13,7 +13,7 @@ const EmployeePage = () => {
   const handleScan = async () => {
     setIsScanning(true);
     try {
-      const results = await mockScanPrompt(prompt);
+      const results = await scanPrompt(prompt);
       setScanResults(results);
     } catch (error) {
       console.error("Scan failed", error);

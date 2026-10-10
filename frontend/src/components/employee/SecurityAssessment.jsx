@@ -30,8 +30,8 @@ const SecurityAssessment = ({ results }) => {
       <div className="panel-header">
         <div className="panel-title">
           Security Assessment
-          <span style={{ fontSize: '0.875rem', fontWeight: 'normal', color: 'var(--text-tertiary)', marginLeft: '8px' }}>
-            (Mock Analysis)
+          <span style={{ fontSize: '0.875rem', fontWeight: 'normal', color: results?.isLiveBackend ? 'var(--accent-primary, #6366f1)' : 'var(--text-tertiary)', marginLeft: '8px' }}>
+            {results?.isLiveBackend ? '(FastAPI + Qwen3 4B Live)' : '(Offline Analysis)'}
           </span>
         </div>
       </div>
@@ -49,6 +49,12 @@ const SecurityAssessment = ({ results }) => {
             {riskLevel} RISK
           </div>
         </div>
+
+        {results.message && (
+          <div style={{ marginBottom: '1rem', padding: '0.75rem 1rem', backgroundColor: 'var(--bg-tertiary)', borderRadius: '8px', borderLeft: '4px solid var(--accent-primary)', fontSize: '0.875rem' }}>
+            {results.message}
+          </div>
+        )}
 
         {findings.length === 0 ? (
           <div className="empty-state" style={{ padding: '1rem', backgroundColor: 'var(--bg-tertiary)', borderRadius: '8px' }}>
