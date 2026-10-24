@@ -30,9 +30,6 @@ const SecurityAssessment = ({ results }) => {
       <div className="panel-header">
         <div className="panel-title">
           Security Assessment
-          <span style={{ fontSize: '0.875rem', fontWeight: 'normal', color: results?.isLiveBackend ? 'var(--accent-primary, #6366f1)' : 'var(--text-tertiary)', marginLeft: '8px' }}>
-            {results?.isLiveBackend ? '(FastAPI + Qwen3 4B Live)' : '(Offline Analysis)'}
-          </span>
         </div>
       </div>
 
